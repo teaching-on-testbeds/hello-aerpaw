@@ -63,3 +63,50 @@ OpenVPN client for Windows should work fine. Dowload from here  https://openvpn.
 This should create an icon in the system tray for OpenVPN.  The openvpn profile file you received as part of the Manifest can be imported by selecting the menu item "Import -> Import file".  After the file is imported click "connect" and this should create a new logical network interface in your OS with IP address 192.168.108.xxx for the example provided above.   <br>
 If OpenVPN does not work, you can also try Windows Subsystem for Linux (WSL), a compatibility layer that enables Linux binary executables to be run on a Windows OS.  You must install WSL 2 (WSL 1 provides a thinner compatibility, which will not suffice). <br>
 
+#### Exercise: Create SSH keys <br>
+Once you are part of a project with an active allocation, you can set up SSH keys.
+
+Note: If you already have an SSH key pair, you can use it with AERPAW - copy the contents of the public key, then skip to the “Profile: Upload SSH keys to AERPAW” section and continue there. If you don’t already have an SSH key pair, continue with the rest of this section. <br><br>
+
+AERPAW users access resources using public key authentication. Using SSH public-key authentication to connect to a remote system is a more secure alternative to logging in with an account password. <br><br>
+
+SSH public-key authentication uses a pair of separate keys (i.e., a key pair): one “private” key, which you keep a secret, and the other “public”. A key pair has a special property: any message that is encrypted with your private key can only be decrypted with your public key, and any message that is encrypted with your public key can only be decrypted with your private key. <br><br>
+
+This property can be exploited for authenticating login to a remote machine. First, you upload the public key to a special location on the remote machine. Then, when you want to log in to the machine: <br><br>
+
+You use a special argument with your SSH command to let your SSH application know that you are going to use a key, and the location of your private key. If the private key is protected by a passphrase, you may be prompted to enter the passphrase (this is not a password for the remote machine, though).<br><br>
+The machine you are logging in to will ask your SSH client to “prove” that it owns the (secret) private key that matches an authorized public key. To do this, the machine will send a random message to you.<br><br>
+Your SSH client will encrypt the random message with the private key and send it back to the remote machine.
+The remote machine will decrypt the message with your public key. If the decrypted message matches the message it sent you, it has “proof” that you are in possession of the private key for that key pair, and will grant you access (without using an account password on the remote machine.)<br>
+(Of course, this relies on you keeping your private key a secret.)<br><br>
+
+We’re going to generate a key pair on our laptop, then upload it to the AERPAW sites we are likely to use.<br>
+
+Open a terminal, and generate a key named id_rsa_aerpaw:<br>
+
+ssh-keygen -t rsa -f ~/.ssh/id_rsa_aerpaw<br>
+Follow the prompts to generate and save the key pair. The output should look something like this: <br><br>
+
+$ ssh-keygen -t rsa<br>
+Generating public/private rsa key pair.<br>
+Enter file in which to save the key (/users/ffund01/.ssh/id_rsa_aerpaw): <br>
+Enter passphrase (empty for no passphrase): <br>
+Enter same passphrase again: <br>
+Your identification has been saved in /users/ffund01/.ssh/id_rsa_aerpaw.<br>
+Your public key has been saved in /users/ffund01/.ssh/id_rsa_aerpaw.pub.<br>
+The key fingerprint is:<br>
+SHA256:z1W/psy05g1kyOTL37HzYimECvOtzYdtZcK+8jEGirA ffund01@example.com<br>
+The key's randomart image is:<br>
++---[RSA 2048]----+<br>
+|                 |<br>
+|                 |<br>
+|           .  .  |<br>
+|          + .. . |<br>
+|    .   S .*.o  .|<br>
+|     oo. +ooB o .|<br>
+|    E .+.ooB+* = |<br>
+|        oo+.@+@\.\o|<br>
+|        ..o==@ =+|<br>
++----[SHA256]-----+<br>
+If you use a passphrase, make a note of it somewhere safe! (You don’t have to use a passphrase, though - feel free to leave that empty for no passphrase.)<br>
+
