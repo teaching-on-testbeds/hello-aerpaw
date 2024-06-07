@@ -63,7 +63,7 @@ Before you can run an experiment on AERPAW, you will need to:
 
 First, you will create an account on the AERPAW experiment portal. 
 
-1. From the AERPAW website [https://aerpaw.org/](https://aerpaw.org/), click "Experiment Web Portal" from the menu.
+1. From the AERPAW website [https://user-web-portal.aerpaw.ncsu.edu](https://user-web-portal.aerpaw.ncsu.edu), click "Experiment Web Portal" from the menu.
 2. Choose "Login" in the top right. 
 3. Click on "AERPAW Login."
 4. In the "Select Identity Provider" section, click on the dropdown menu and find your institution. Then, click "Log On". You will be redirected to log in using your institutional credentials.
