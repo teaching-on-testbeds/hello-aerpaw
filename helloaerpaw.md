@@ -45,7 +45,7 @@ To connect to resources in the AERPAW virtual environment, you will need to set 
 The [AERPAW User Manual](https://sites.google.com/ncsu.edu/aerpaw-wiki/aerpaw-user-manual/2-experiment-lifecycle-workflows/2-6-experiment-access-workflow#h.m45jkgvsom69) recommends:
 
 * On Linux: OpenVPN version 2 (not Version 3, which does not support AERPAW VPNs). It can be installed on Ubuntu with `sudo apt install openvpn`, or on any Linux distribution by installing [from source](https://github.com/OpenVPN/openvpn/).
-* On Mac: [Tunnelblick](https://tunnelblick.net/downloads.html) is the recommended software.
+* On Mac: [Tunnelblick](https://tunnelblick.net/downloads.html) is the recommended software. 
 * On Windows: [OpenVPN client for Windows](https://openvpn.net/community-downloads/).
 
 
@@ -194,3 +194,40 @@ This will automatically send an email request to your supervisor.  Once they hav
 ## Run an experiment
 
 Now, you are ready to run an experiment on AERPAW!
+
+In this "Hello, AERPAW" experiment, you are going to set up an experiment with two mobile vehicles: one aerial vehicle (UAV) and one ground vehicle (UGV). 
+
+#### Add members and resources to your experiment
+
+First, log in to the AERPAW Experiment Portal. Click on "Projects" in the navigation bar, and find the project that you are a member of; click on it to open the project overview. Click on the "Create" button in the "Experiments" section. Give your project a "Name" and a "Description" and then click "Save".
+
+From the experiment page, you will add members and resources (required) to the experiment: 
+
+<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/fe7d3675-abc3-4895-ad4f-63b43d5e9aec" width="200px">
+
+Click on the "Update" button next to "Members". Select your instructor or advisor, click on the arrow to the move them to the list of "Chosen Members", then click "Save".
+
+Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment: first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select SPN-Android (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
+
+<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/0acd0690-26f2-4f40-a85b-89f7379c6bc2" width="800px">
+
+Click "Save". Then, you will modify each of the nodes by clicking "Modify" - 
+
+<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/234e6b93-b6df-4a4c-8721-59778790359a" width="800px">
+
+* for node 1 (LPN1), change the "Node Vehicle" property to "vehicle_uav" and click "Save"
+* for node 2 (SPN-Android), change the "Node Vehicle" property to "vehicle_ugv" and click "Save"
+
+<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/d347737f-0e95-4218-a504-90190205a1d5" width="200px">
+<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/42cfb511-da48-4b5c-ba7b-e7af987bf942" width="200px">
+
+Click "Back to Experiment", then "Initialize Development".
+
+<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/5229775b-ca15-4e9d-8b33-6cb9bb8113df" width="800px">
+
+#### Access experiment resources
+
+> **Note for Mac users**: AERPAW VPNs use something called a `tap` interface. On some versions of MacOS you may need to take some additional steps in order to use a `tap` interface - refer to the instructions [here](https://tunnelblick.net/cKextLoadError.html) for your specific OS version.
+
+ Wait until you receive an email notification that the experiment is ready to use.
+
