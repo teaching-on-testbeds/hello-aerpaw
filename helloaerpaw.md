@@ -225,9 +225,11 @@ Click "Back to Experiment", then "Initialize Development".
 
 <image src="https://github.com/weijiekwang/AERPAW/assets/123581716/5229775b-ca15-4e9d-8b33-6cb9bb8113df" width="800px">
 
+Wait until you receive an email notification that the experiment is ready to use.
+
+
 #### Access experiment resources
 
 > **Note for Mac users**: AERPAW VPNs use something called a `tap` interface. On some versions of MacOS you may need to take some additional steps in order to use a `tap` interface - refer to the instructions [here](https://tunnelblick.net/cKextLoadError.html) for your specific OS version.
 
- Wait until you receive an email notification that the experiment is ready to use.
 
