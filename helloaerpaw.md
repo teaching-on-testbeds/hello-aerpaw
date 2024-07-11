@@ -210,9 +210,9 @@ From the experiment page, you will add members and resources to the experiment:
 
 <image src="https://github.com/weijiekwang/AERPAW/assets/123581716/fe7d3675-abc3-4895-ad4f-63b43d5e9aec" width="200px">
 
-Click on the "Update" button next to "Members". Select your instructor or advisor, click on the arrow to the move them to the list of "Chosen Members", then click "Save".
+Click on the "Update" button next to "Members". Select your course instructor or research advisor, click on the arrow to the move them to the list of "Chosen Members", then click "Save".
 
-Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment: first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select SPN-Android (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
+Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment (in the specified order): first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select SPN-Android (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
 
 <image src="https://github.com/weijiekwang/AERPAW/assets/123581716/0acd0690-26f2-4f40-a85b-89f7379c6bc2" width="800px">
 
@@ -226,12 +226,11 @@ Click "Save". Then, you will modify each of the nodes by clicking "Modify" -
 <image src="https://github.com/weijiekwang/AERPAW/assets/123581716/d347737f-0e95-4218-a504-90190205a1d5" width="200px">
 <image src="https://github.com/weijiekwang/AERPAW/assets/123581716/42cfb511-da48-4b5c-ba7b-e7af987bf942" width="200px">
 
-Click "Back to Experiment", then "Initialize Development".
+Click "Back to Experiment", then "Initiate Development".
 
 <image src="https://github.com/weijiekwang/AERPAW/assets/123581716/5229775b-ca15-4e9d-8b33-6cb9bb8113df" width="800px">
 
-Wait until you receive an email notification that the experiment is ready to use.
-
+You will receive an email with the subject "Request to initiate development session". You must then wait until you receive another email notification indicating that the development session is active.
 
 #### Access experiment resources
 
