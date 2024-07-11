@@ -191,7 +191,7 @@ Once you are logged in to the AERPAW experiment portal,
 This will automatically send an email request to your supervisor.  Once they have approved your request, you will receive email notification that you have been added to the project.
 
 
-## Run an experiment
+## Start an experiment
 
 Now, you are ready to run an experiment on AERPAW!
 
@@ -232,9 +232,18 @@ Click "Back to Experiment", then "Initiate Development".
 
 You will receive an email with the subject "Request to initiate development session". You must then wait until you receive another email notification indicating that the development session is active.
 
-#### Access experiment resources
+## Access experiment resources
+
+At this stage, you are ready to access experiment resources!
+
+#### Start VPN
 
 >[!NOTE]
 >**For Mac users**: AERPAW VPNs use something called a `tap` interface. On some versions of MacOS you may need to take some additional steps in order to use a `tap` interface - refer to the instructions [here](https://tunnelblick.net/cKextLoadError.html) for your specific OS version.
 
+#### Start SSH session
+
+#### Connect QGroundControl to your experiment
+
+#### Execute radio and mobility applications in your experiment
 
