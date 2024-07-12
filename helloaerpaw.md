@@ -489,9 +489,6 @@ As the UAV flies to the specified position, watch the radio power reported in yo
 
 ## Reset experiment
 
-To return the experiment to its initial configuration, 
+To return the experiment to its initial configuration. run `./stopexperiment.sh` and then `./reset.sh` inside the SSH session on each node (node 1 and node 2)
 
-* Run `./stopexperiment.sh` inside the SSH session on each node (node 1 and node 2)
-* Select "Vehicle 1" from the menu at the top, then on the left side, choose "Return". Slide to confirm. The UAV will return to its initial position. Then, click "Land" on the left side, and slide to confirm.
-* Select "Vehicle 2" from the menu at the top, then on the left side, choose "Return". Slide to confirm. The UGV will return to its initial position.
-* In the experiment console session, use Ctrl+D to stop the console.
+In the experiment console session, use Ctrl+D to stop the console.
