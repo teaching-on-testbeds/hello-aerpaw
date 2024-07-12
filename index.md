@@ -33,12 +33,12 @@ During the setup, you will be prompted to specify certain settings, please use:
 * Autopilot: ArduPilot
 * Frame: Quad
 
-![QGroundControl setup.](images/qgc-setup.png)
+<image src="mages/qgc-setup.png" width="200px">
 
 
 When you run QGroundControl for the first time, it will look like this:
 
-![QGroundControl after initial install.](images/qgc-initial.png)
+<image src="images/qgc-initial.png" width="400px">
 
 #### OpenVPN 
 
@@ -238,7 +238,7 @@ You will receive an email with the subject "Request to initiate development sess
 
 Once you receive notification that your development session is active, when you return to your experiment page in the Experiment Web Portal, you will see a "Linked files" section with two files - click the "download" link next to each to download these files to your computer.
 
-<image src="images/download-files.png" width="800px">
+<image src="images/download-files.png" width="400px">
 
 At this stage, you are ready to access experiment resources! To access resources on AERPAW, you need to establish a connection to them in three steps:
 
