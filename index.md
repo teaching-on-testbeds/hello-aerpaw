@@ -238,7 +238,7 @@ You will receive an email with the subject "Request to initiate development sess
 
 Once you receive notification that your development session is active, when you return to your experiment page in the Experiment Web Portal, you will see a "Linked files" section with two files - click the "download" link next to each to download these files to your computer.
 
-![Files for download from the experiment portal page.](images/download-files.png)
+<image src="images/download-files.png" width="800px">
 
 At this stage, you are ready to access experiment resources! To access resources on AERPAW, you need to establish a connection to them in three steps:
 
