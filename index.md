@@ -254,10 +254,10 @@ To start the VPN connection, you will need the file with `.ovpn` extension that 
 
 #### On Linux - start VPN
 
-Suppose your `.ovpn` file is named `aerpaw-common.ovpn`. On Linux, you would run
+Suppose your `.ovpn` file is named `aerpaw-XM-X0000-common.ovpn`. On Linux, you would run
 
 ```
-sudo openvpn aerpaw-XM-X0296-common.ovpn
+sudo openvpn aerpaw-XM-X0000-common.ovpn
 ```
 
 in a terminal (from the same directory where you have downloaded the file). If it is successful, you should see
@@ -474,7 +474,7 @@ and after a few moments, run
 tail -f Results/$(ls -tr Results/ | grep power_log | tail -n 1 )
 ```
 
-This will monitor the radio output on the UAV. For now, there is no output - yet.
+This will monitor the radio output on the UAV. The last value in each row is the received signal strength.
 
 Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - for vehicle 1, you should see a "quality", "rxGRC", "vehicle", and "power" entry in the "screens" column.
 
