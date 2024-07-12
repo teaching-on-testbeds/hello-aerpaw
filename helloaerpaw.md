@@ -2,9 +2,11 @@ AERPAW is a wireless research platform for experiments involving advanced wirele
 
 AERPAW experiments begin in Development Mode, in the AERPAW Virtual Environment, before they are deployed on the physical testbed in live flight. In this tutorial, you will configure the software you'll need on your own device, create an account on AERPAW, and run an example experiment in the AERPAW Virtual Environment. 
 
+In the example experiment, you will run a radio transmitter on a ground vehicle, and then manually move it to a desired position. Then, you will run a radio receiver on an aerial vehicle, fly it past the ground vehicle, and observe how the received signal strength increases (as you get closer to the ground vehicle) and decreases (as you get farther from the ground vehicle).
+
 
 >[!NOTE] 
->This process has a “human in the loop” approval stage - students will need to wait for an instructor or research advisor to approve their request to join their project. They should be prepared to start the tutorial, wait for this approval, and then continue.
+>This process has a “human in the loop” approval stage - students will need to wait for AERPAW staff to approve their account, then again for an instructor or research advisor to approve their request to join their project. They should be prepared to start the tutorial, wait for these approvals, and then continue.
 
 
 ## Prepare your workstation 
@@ -315,7 +317,7 @@ Run
 cd; ./startOEOConsole.sh
 ```
 
-This will display a table showing all of the vehicles in your experiment, and their current state. You should see two vehicles, with ID 1 and ID 2.
+This will display a table showing all of the vehicles in your experiment, and their current state. You should see two vehicles, with ID 1 and ID 2. Leave this running - later, you will need to run some additional commands in this window.
 
 Now you can connect QGroundControl to your experiment. In QGroundControl,
 
@@ -343,12 +345,153 @@ Then, in QGroundControl, make sure that "Vehicle 1" is selected in the dropdown 
 
 * From the icons on the left side, click the "Plan" icon (it looks like two waypoints with a path between them)
 * Click on "Fence" button in the upper right corner in the plan view, then select the "Polygon Fence" button underneath, then the "Load KML/SHP" (in the middle top of the window), and upload the UAV Geofence `.kml` file you just downloaded.
+* Then, click on "File" and choose "Upload". Click "OK" on the right side of the screen to upload the geofence to the vehicle.
 
 ![Upload a geofence for UAV.](images/upload-uav-fence.png)
 
-* Then, click on "File" and choose "Upload". Click "OK" on the right side of the screen to upload the geofence to the vehicle.
 * Click on the "Fly" icon on the left (looks like a paper airplane) to return to the main view.
 
-Next, click on Vehicle 2. Repeat these steps, but with the UGV Geofence `.kml` file you downloaded (`AFAR Rover.kml`). 
+Next, select "Vehicle 2" in the dropdown at the top center of the screen. Repeat these steps, but with the UGV Geofence `.kml` file you downloaded (`AFAR Rover.kml`).  Click on the "Fly" icon on the left (looks like a paper airplane) to return to the main view.
+
 
 ### Start SSH Sessions + Run radio and mobility applications 
+
+In this example experiment, you will run a radio transmitter on a ground vehicle, and then manually move it to a desired position. Then, you will run a radio receiver on an aerial vehicle, fly it past the ground vehicle, and observe how the received signal strength increases (as you get closer to the ground vehicle) and decreases (as you get farther from the ground vehicle).
+
+#### Start ground vehicle
+
+First, we will start everything running on the ground vehicle. 
+
+Open an SSH session to the ground vehicle, which is node 2 in your experiment.  For this, you will need the `Manifest.txt` file you downloaded earlier. Open it and find the address of the second "Portable Node". (This will follow the pattern `192.168.X.2` where the value of `X` is different for each AERPAW experiment - so you need to check the manifest to find out the value in *your* experiment.)
+
+Then run
+
+```
+ssh -i ~/.ssh/id_rsa_aerpaw root@192.168.X.2
+```
+
+where in place of the address with the `X`, you use the address you identified earlier in the manifest. You may be prompted for the passphrase for your key, if you set a passphrase when generating the key.  
+
+The terminal prompt will change to 
+
+```
+root@E-VM-M2:~$ 
+```
+
+indicating that you are logged in to node 2. On node 2, run
+
+```
+cd /root/Profiles/ProfileScripts/Radio 
+cp Samples/startGNURadio-ChannelSounder-TX.sh startRadio.sh 
+
+cd /root/Profiles/ProfileScripts/Vehicle
+cp Samples/startGPSLogger.sh startVehicle.sh
+```
+
+Then, open the experiment script for editing
+
+```
+cd /root
+nano /root/startexperiment.sh
+```
+
+and at the bottom of this file, remove the `#` comment sign next to `./Radio/startRadio.sh` and `./Vehicle/startVehicle.sh`, so that the end of the file looks like this:
+
+```
+./Radio/startRadio.sh
+#./Traffic/startTraffic.sh
+./Vehicle/startVehicle.sh
+```
+
+Hit Ctrl+O and then hit Enter to save the file. Then use Ctrl+X to exit and return to the terminal. Run 
+
+```
+./startexperiment.sh
+```
+
+Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - now, for vehicle 2, you should see a "vehicle" and "txGRC" entry in the "screens" column.
+
+In QGroundControl, select "Vehicle 2" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". At the bottom of the screen, slide the indicator to the right to "arm" the ground vehicle. 
+
+Then, click on any position inside the square geofence, and choose "Go to location". Use the slider on the bottom of the screen again to confirm. You will see the UGV move to the specified position.
+
+#### Start aerial vehicle
+
+Now, we will set things up on the aerial vehicle.
+
+Open an SSH session to the aerial vehicle, which is node 1 in your experiment.  For this, you will need the `Manifest.txt` file you downloaded earlier. Open it and find the address of the first "Portable Node". (This will follow the pattern `192.168.X.1` where the value of `X` is different for each AERPAW experiment - so you need to check the manifest to find out the value in *your* experiment.)
+
+Then run
+
+```
+ssh -i ~/.ssh/id_rsa_aerpaw root@192.168.X.1
+```
+
+where in place of the address with the `X`, you use the address you identified earlier in the manifest. You may be prompted for the passphrase for your key, if you set a passphrase when generating the key.  
+
+The terminal prompt will change to 
+
+```
+root@E-VM-M1:~$ 
+```
+
+indicating that you are logged in to node 1. On node 1, run
+
+```
+cd /root/Profiles/ProfileScripts/Radio 
+cp Samples/startGNURadio-ChannelSounder-RX.sh startRadio.sh 
+
+cd /root/Profiles/ProfileScripts/Vehicle
+cp Samples/startGPSLogger.sh startVehicle.sh
+```
+
+Then, open the experiment script for editing
+
+```
+cd /root
+nano /root/startexperiment.sh
+```
+
+and at the bottom of this file, remove the `#` comment sign next to `./Radio/startRadio.sh` and `./Vehicle/startVehicle.sh`, so that the end of the file looks like this:
+
+```
+./Radio/startRadio.sh
+#./Traffic/startTraffic.sh
+./Vehicle/startVehicle.sh
+```
+
+Hit Ctrl+O and then hit Enter to save the file. Then use Ctrl+X to exit and return to the terminal. Run 
+
+```
+./startexperiment.sh
+```
+
+and after a few moments, run
+
+```
+tail -f Results/$(ls -tr Results/ | grep power_log | tail -n 1 )
+```
+
+This will monitor the radio output on the UAV. For now, there is no output - yet.
+
+Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - for vehicle 1, you should see a "quality", "rxGRC", "vehicle", and "power" entry in the "screens" column.
+
+In QGroundControl, select "Vehicle 1" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". At the bottom of the screen, slide the indicator to the right to "arm" the aerial vehicle. 
+
+On the left side of the screen, click "Takeoff" (icon looks like an arrow pointing up). Then, on the right side of the screen, use the slider to set the altitude to approximately 30m. Use the slider to confirm, and the UAV will life off the ground and hold the desired altitude. Watch the indicator at the bottom of the screen for confirmation.
+
+Once the UAV is at its desired altitude,  click on a position that is inside its geofence, that will take it over and beyond the ground vehicle. Choose "Go to location". Use the slider on the bottom of the screen again to confirm. 
+
+![Fly UAV past the UGV.](images/fly-uav.png)
+
+As the UAV flies to the specified position, watch the radio power reported in your terminal. Confirm that the received signal strength increases as the UAV moves above the UGV, then decreases again when the distance between UAV and UGV increases.
+
+
+## Reset experiment
+
+To return the experiment to its initial configuration, 
+
+* Run `./stopexperiment.sh` inside the SSH session on each node (node 1 and node 2)
+* Select "Vehicle 1" from the menu at the top, then on the left side, choose "Return". Slide to confirm. The UAV will return to its initial position. Then, click "Land" on the left side, and slide to confirm.
+* Select "Vehicle 2" from the menu at the top, then on the left side, choose "Return". Slide to confirm. The UGV will return to its initial position.
+* In the experiment console session, use Ctrl+D to stop the console.
