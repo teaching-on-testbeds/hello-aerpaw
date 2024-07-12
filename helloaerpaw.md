@@ -332,7 +332,7 @@ Click OK, then click on the link to highlight it (it will turn bright yellow), t
 
 Now, when you open QGroundControl, you should see the two vehicles in your experiment, in their start position (at the Lake Wheeler Road Field Laboratories at North Carolina State University).
 
-![Vehicles in their start position.](../images/qground-connected.png)
+![Vehicles in their start position.](images/qground-connected.png)
 
 We will restrict our experiment to a specific "geofence" area, so let's mark this area in QGroundControl. Download the two geofence files:
 
@@ -344,7 +344,7 @@ Then, in QGroundControl, make sure that "Vehicle 1" is selected in the dropdown 
 * From the icons on the left side, click the "Plan" icon (it looks like two waypoints with a path between them)
 * Click on "Fence" button in the upper right corner in the plan view, then select the "Polygon Fence" button underneath, then the "Load KML/SHP" (in the middle top of the window), and upload the UAV Geofence `.kml` file you just downloaded.
 
-![Upload a geofence for UAV.](../images/upload-uav-fence.png)
+![Upload a geofence for UAV.](images/upload-uav-fence.png)
 
 * Then, click on "File" and choose "Upload". Click "OK" on the right side of the screen to upload the geofence to the vehicle.
 * Click on the "Fly" icon on the left (looks like a paper airplane) to return to the main view.
