@@ -283,4 +283,72 @@ When you run OpenVPN, an icon should appear in the system tray. From OpenVPN, us
 
 ### Start SSH Port Forwarding + Connect QGroundControl
 
+When the VPN is running, you can connect QGroundControl to your AERPAW experiment! For this, you will need the `Manifest.txt` file you downloaded. Open it and find the address of the "OEO Console". (This will follow the pattern `192.168.X.62` where the value of `X` is different for each AERPAW experiment - so you need to check the manifest to find out the value in *your* experiment.)
+
+Then, assuming you had generated an AERPAW key at `~/.ssh/id_rsa_aerpaw` following the instructions above, open your terminal and run
+
+```
+ssh -i ~/.ssh/id_rsa_aerpaw -L 5760:127.0.0.1:5760 root@192.168.X.62
+```
+
+where in place of the address with the `X`, you use the address you identified earlier in the manifest. You may be prompted for the passphrase for your key, if you set a passphrase when generating the key. 
+
+The first time you log in to a new host, your computer may display a warning similar to the following:
+
+```
+The authenticity of host can't be established.
+RSA key fingerprint is SHA256:FUNco2udT/ur2rNb2NnZnUc8s2v6xvNdOFhFFxcWGYA.
+Are you sure you want to continue connecting (yes/no)?
+```
+
+and you will have to type the word yes and hit Enter to continue.
+
+When this is successful, you should see that the terminal prompt indicates that you are logged in to the experiment console, like this:
+
+```
+root@OEO-CONSOLE:~$ 
+```
+
+Run 
+
+```
+cd; ./startOEOConsole.sh
+```
+
+This will display a table showing all of the vehicles in your experiment, and their current state. You should see two vehicles, with ID 1 and ID 2.
+
+Now you can connect QGroundControl to your experiment. In QGroundControl,
+
+* Open the QGroundControl application menu (Q in the upper left corner)
+* Click "Application Settings > Comm Links > Add"
+* Fill in the fields as follows:
+  * Name: Remote Link
+  * Type: TCP
+  * Server Address: 127.0.0.1
+  * Port: 5760
+* Check "Automatically Connect On Start".
+
+Click OK, then click on the link to highlight it (it will turn bright yellow), then click "Connect" on the bottom. Then, click the "Back" button to return to the main application.
+
+Now, when you open QGroundControl, you should see the two vehicles in your experiment, in their start position (at the Lake Wheeler Road Field Laboratories at North Carolina State University).
+
+![Vehicles in their start position.](../images/qground-connected.png)
+
+We will restrict our experiment to a specific "geofence" area, so let's mark this area in QGroundControl. Download the two geofence files:
+
+* [UAV Geofence](https://drive.google.com/file/d/1P8GxtgAPCSKywPo4pDo0RmiJ2MQmHTJJ/view)
+* [UGV Geofence](https://drive.google.com/file/d/1JiHwizo982Rxg_0im9mnenFP9LhifjW5/view)
+  
+Then, in QGroundControl, make sure that "Vehicle 1" is selected in the dropdown at the top center of the screen.
+
+* From the icons on the left side, click the "Plan" icon (it looks like two waypoints with a path between them)
+* Click on "Fence" button in the upper right corner in the plan view, then select the "Polygon Fence" button underneath, then the "Load KML/SHP" (in the middle top of the window), and upload the UAV Geofence `.kml` file you just downloaded.
+
+![Upload a geofence for UAV.](../images/upload-uav-fence.png)
+
+* Then, click on "File" and choose "Upload". Click "OK" on the right side of the screen to upload the geofence to the vehicle.
+* Click on the "Fly" icon on the left (looks like a paper airplane) to return to the main view.
+
+Next, click on Vehicle 2. Repeat these steps, but with the UGV Geofence `.kml` file you downloaded (`AFAR Rover.kml`). 
+
 ### Start SSH Sessions + Run radio and mobility applications 
