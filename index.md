@@ -33,12 +33,12 @@ During the setup, you will be prompted to specify certain settings, please use:
 * Autopilot: ArduPilot
 * Frame: Quad
 
-<image src="mages/qgc-setup.png" width="200px">
+<image src="images/qgc-setup.png" width="200px">
 
 
 When you run QGroundControl for the first time, it will look like this:
 
-<image src="images/qgc-initial.png" width="400px">
+<image src="images/qgc-initial.png" width="600px">
 
 #### OpenVPN 
 
