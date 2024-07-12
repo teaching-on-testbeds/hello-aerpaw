@@ -234,16 +234,53 @@ You will receive an email with the subject "Request to initiate development sess
 
 ## Access experiment resources
 
-At this stage, you are ready to access experiment resources!
+Once you receive notification that your development session is active, when you return to your experiment page in the Experiment Web Portal, you will see a "Linked files" section with two files - click the "download" link next to each to download these files to your computer.
 
-#### Start VPN
+![Files for download from the experiment portal page.](images/download-files.png)
+
+At this stage, you are ready to access experiment resources! To access resources on AERPAW, you need to establish a connection to them in three steps:
+
+* Start a VPN - none of the later steps will work unless your VPN connection to AERPAW is established successfully. 
+* Start an SSH session to the AERPAW experiment console, with port forwarding, and connect QGroundControl to this SSH session
+* Start one or more SSH sessions to the AERPAW resources, and run radio and mobility applications in them
+
+### Start VPN
+
+To start the VPN connection, you will need the file with `.ovpn` extension that you downloaded from the experiment portal page. Then, your next steps will depend on your OS.
+
+#### On Linux - start VPN
+
+Suppose your `.ovpn` file is named `aerpaw-common.ovpn`. On Linux, you would run
+
+```
+sudo openvpn aerpaw-XM-X0296-common.ovpn
+```
+
+in a terminal (from the same directory where you have downloaded the file). If it is successful, you should see
+
+```
+2024-07-12 13:08:04 TUN/TAP device tap0 opened
+2024-07-12 13:08:04 Initialization Sequence Completed
+```
+
+in the output. Leave this running, and in a second terminal window, run
+
+```
+sudo dhclient tap0
+```
+#### On Mac - start VPN
+
+For Mac OS, the recommended VPN software is Tunnelblick. With Tunnelblick running, open the Finder. Drag and drop the `.ovpn` file onto the Tunnelblick icon in the menu bar. You may be asked if the configuration should be shared or private (either is fine!) and you may have to give administrator authorization to install the configuration.
+
+Once the VPN configuration is installed in Tunnelblick, when you click on the Tunnelblick icon in the menu bar, you should see a "Connect" option for this configuration. You can click on this "Connect" option to start the VPN connection. Wait several seconds after the connection is established and it turns "green" before you proceed to the next step, since it takes some additional time to assign an address to the VPN interface.
 
 >[!NOTE]
 >**For Mac users**: AERPAW VPNs use something called a `tap` interface. On some versions of MacOS you may need to take some additional steps in order to use a `tap` interface - refer to the instructions [here](https://tunnelblick.net/cKextLoadError.html) for your specific OS version.
 
-#### Start SSH session
+#### On Windows - start VPN
 
-#### Connect QGroundControl to your experiment
+When you run OpenVPN, an icon should appear in the system tray. From OpenVPN, use "Import > Import file" to import the `.ovpn` file, then click "Connect". 
 
-#### Execute radio and mobility applications in your experiment
+### Start SSH Port Forwarding + Connect QGroundControl
 
+### Start SSH Sessions + Run radio and mobility applications 
