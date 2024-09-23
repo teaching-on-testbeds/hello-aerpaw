@@ -1,3 +1,5 @@
+# Hello, AERPAW
+
 AERPAW is a wireless research platform for experiments involving advanced wireless technologies (such as 5G) and autonomous drones. 
 
 AERPAW experiments begin in Development Mode, in the AERPAW Virtual Environment, before they are deployed on the physical testbed in live flight. In this tutorial, you will configure the software you'll need on your own device, create an account on AERPAW, and run an example experiment in the AERPAW Virtual Environment. 
@@ -33,12 +35,12 @@ During the setup, you will be prompted to specify certain settings, please use:
 * Autopilot: ArduPilot
 * Frame: Quad
 
-![QGroundControl setup.](images/qgc-setup.png)
+![](images/qgc-setup.png)
 
 
 When you run QGroundControl for the first time, it will look like this:
 
-![QGroundControl after initial install.](images/qgc-initial.png)
+![](images/qgc-initial.png)
 
 #### OpenVPN 
 
@@ -210,13 +212,11 @@ Give your project a "Name" (you may use the template `hello_username`, e.g. `hel
 
 From the experiment page, you will add members and resources to the experiment: 
 
-<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/fe7d3675-abc3-4895-ad4f-63b43d5e9aec" width="200px">
+![](https://github.com/weijiekwang/AERPAW/assets/123581716/fe7d3675-abc3-4895-ad4f-63b43d5e9aec)
 
 Click on the "Update" button next to "Members". Select your course instructor or research advisor, click on the arrow to the move them to the list of "Chosen Members", then click "Save".
 
 Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment (in the specified order): first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select LPN2 (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
-
-![Add resources](images/add-resource.png)
 
 
 Click "Save". Then, you will modify each of the nodes by clicking "Modify" - 
@@ -228,7 +228,7 @@ Click "Save". Then, you will modify each of the nodes by clicking "Modify" -
 
 Click "Back to Experiment", then "Initiate Development".
 
-<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/5229775b-ca15-4e9d-8b33-6cb9bb8113df" width="800px">
+![](https://github.com/weijiekwang/AERPAW/assets/123581716/5229775b-ca15-4e9d-8b33-6cb9bb8113df)
 
 You will receive an email with the subject "Request to initiate development session". You must then wait until you receive another email notification indicating that the development session is active.
 
@@ -236,7 +236,7 @@ You will receive an email with the subject "Request to initiate development sess
 
 Once you receive notification that your development session is active, when you return to your experiment page in the Experiment Web Portal, you will see a "Linked files" section with two files - click the "download" link next to each to download these files to your computer.
 
-![Files for download from the experiment portal page.](images/download-files.png)
+![](images/download-files.png)
 
 At this stage, you are ready to access experiment resources! To access resources on AERPAW, you need to establish a connection to them in three steps:
 
@@ -250,10 +250,10 @@ To start the VPN connection, you will need the file with `.ovpn` extension that 
 
 #### On Linux - start VPN
 
-Suppose your `.ovpn` file is named `aerpaw-common.ovpn`. On Linux, you would run
+Suppose your `.ovpn` file is named `aerpaw-XM-X0000-common.ovpn`. On Linux, you would run
 
 ```
-sudo openvpn aerpaw-XM-X0296-common.ovpn
+sudo openvpn aerpaw-XM-X0000-common.ovpn
 ```
 
 in a terminal (from the same directory where you have downloaded the file). If it is successful, you should see
@@ -332,7 +332,7 @@ Click OK, then click on the link to highlight it (it will turn bright yellow), t
 
 Now, when you open QGroundControl, you should see the two vehicles in your experiment, in their start position (at the Lake Wheeler Road Field Laboratories at North Carolina State University).
 
-![Vehicles in their start position.](images/qground-connected.png)
+![](images/qground-connected.png)
 
 We will restrict our experiment to a specific "geofence" area, so let's mark this area in QGroundControl. Download the two geofence files:
 
@@ -345,7 +345,7 @@ Then, in QGroundControl, make sure that "Vehicle 1" is selected in the dropdown 
 * Click on "Fence" button in the upper right corner in the plan view, then select the "Polygon Fence" button underneath, then the "Load KML/SHP" (in the middle top of the window), and upload the UAV Geofence `.kml` file you just downloaded.
 * Then, click on "File" and choose "Upload". Click "OK" on the right side of the screen to upload the geofence to the vehicle.
 
-![Upload a geofence for UAV.](images/upload-uav-fence.png)
+![](images/upload-uav-fence.png)
 
 * Click on the "Fly" icon on the left (looks like a paper airplane) to return to the main view.
 
@@ -470,7 +470,7 @@ and after a few moments, run
 tail -f Results/$(ls -tr Results/ | grep power_log | tail -n 1 )
 ```
 
-This will monitor the radio output on the UAV. For now, there is no output - yet.
+This will monitor the radio output on the UAV. The last value in each row is the received signal strength.
 
 Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - for vehicle 1, you should see a "quality", "rxGRC", "vehicle", and "power" entry in the "screens" column.
 
