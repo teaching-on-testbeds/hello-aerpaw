@@ -214,19 +214,17 @@ From the experiment page, you will add members and resources to the experiment:
 
 Click on the "Update" button next to "Members". Select your course instructor or research advisor, click on the arrow to the move them to the list of "Chosen Members", then click "Save".
 
-Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment (in the specified order): first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select SPN-Android (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
+Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment (in the specified order): first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select LPN2 (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
 
-<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/0acd0690-26f2-4f40-a85b-89f7379c6bc2" width="800px">
+![Add resources](images/add-resource.png)
+
 
 Click "Save". Then, you will modify each of the nodes by clicking "Modify" - 
 
-<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/234e6b93-b6df-4a4c-8721-59778790359a" width="800px">
+![Configure resources](images/configure-resource.png)
 
 * for node 1 (LPN1), change the "Node Vehicle" property to "vehicle_uav" and click "Save"
-* for node 2 (SPN-Android), change the "Node Vehicle" property to "vehicle_ugv" and click "Save"
-
-<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/d347737f-0e95-4218-a504-90190205a1d5" width="200px">
-<image src="https://github.com/weijiekwang/AERPAW/assets/123581716/42cfb511-da48-4b5c-ba7b-e7af987bf942" width="200px">
+* for node 2 (LPN2), change the "Node Vehicle" property to "vehicle_ugv" and click "Save"
 
 Click "Back to Experiment", then "Initiate Development".
 
