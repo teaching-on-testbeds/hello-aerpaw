@@ -214,7 +214,12 @@ From the experiment page, you will add members and resources to the experiment:
 
 ![](https://github.com/weijiekwang/AERPAW/assets/123581716/fe7d3675-abc3-4895-ad4f-63b43d5e9aec)
 
-Click on the "Update" button next to "Members". Select your course instructor or research advisor, click on the arrow to the move them to the list of "Chosen Members", then click "Save".
+Click on the "Update" button next to "Members". 
+
+1. Select your course instructor or research advisor, click on the arrow to the move them to the list of "Chosen Members".
+2. Select all team members or peers you are working with, click on the arrow to move them to the list of "Chosen Members".
+
+Then click "Save". (Your advisor and team members will only have access to your experiment resources if you added them to the experiment at this stage - before deploying the resources.)
 
 Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment (in the specified order): first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select LPN2 (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
 
