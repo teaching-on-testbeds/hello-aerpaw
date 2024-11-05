@@ -221,15 +221,16 @@ Click on the "Update" button next to "Members".
 
 Then click "Save". (Your advisor and team members will only have access to your experiment resources if you added them to the experiment at this stage - before deploying the resources.)
 
-Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment (in the specified order): first select LPN1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions) and then select LPN2 (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions):
+Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment: first select LPN1, then select LPN2.
 
 
 Click "Save". Then, you will modify each of the nodes by clicking "Modify" - 
 
 ![Configure resources](images/configure-resource.png)
 
-* for node 1 (LPN1), change the "Node Vehicle" property to "vehicle_uav" and click "Save"
-* for node 2 (LPN2), change the "Node Vehicle" property to "vehicle_ugv" and click "Save"
+* for node number 1 (this will be the UAV, which is assumed to be the first vehicle in the rest of the instructions), change the name to "UAV", change the "Node Vehicle" property to "vehicle_uav" and click "Save"
+* for node number 2 (this will be the UGV, which is assumed to be the second vehicle in the rest of the instructions), change the name to "UGV", change the "Node Vehicle" property to "vehicle_ugv" and click "Save"
+
 
 Click "Back to Experiment", then "Initiate Development".
 
