@@ -207,10 +207,20 @@ Note: If you are working as a group, one member of the group should complete the
 
 First, log in to the AERPAW Experiment Portal. Click on "Projects" in the navigation bar, and find the project that you are a member of; click on it to open the project overview. Click on the "Create" button in the "Experiments" section. 
 
->[!NOTE] 
->Usually, before you begin an experiment on AERPAW you will fill in the "AERPAW Experiment Information Request Form" at this stage. However, if you're completing "Hello, AERPAW" as part of your coursework, your instructor will have completed this form already on your behalf, and you can skip this step.
+Now, you will have to fill in some details about your experiment:
 
-Give your project a "Name" (you may use the template `hello_username`, e.g. `hello_ffund` in my case, for the experiment name) and a "Description" (e.g. "Deploy a UAV and UGV") and then click "Save".
+* Select "Canonical" as the experiment type. This setting is required.
+* Give your experiment a short title: you may use the template `hello_username`, e.g. `hello_ffund` in my case, for the experiment name
+* Enter your university name for "host institution"
+* For "title of your sponsored project", write "NA", and specify that there is no grant number
+* For "Name of the lead experimenter", specify the name of your instructor or research advisor who is supervising your use of AERPAW. And, put their email address in the "email of the lead experimenter" field
+* in the "Keywords" section, you can use: "Hello AERPAW"
+* for "intended goal" you can use: "Hello AERPAW"
+* leave all of the options un-checked for "ultimate end destination". Our experiment will end in development mode, without progressing to any of these later stages.
+* You can select "No" for urgency and "No" for sharing data.
+* and in "expected behavior of the vehicles" you can write: "Hello AERPAW"
+
+Then, click "Create experiment".
 
 From the experiment page, you will add members and resources to the experiment: 
 
@@ -219,12 +229,18 @@ From the experiment page, you will add members and resources to the experiment:
 Click on the "Update" button next to "Members". 
 
 1. Select your course instructor or research advisor, click on the arrow to the move them to the list of "Chosen Members".
-2. Select all team members or peers you are working with, click on the arrow to move them to the list of "Chosen Members".
+2. If you have team members or peers you are working with, click on the arrow to move them to the list of "Chosen Members".
 
 Then click "Save". (Your advisor and team members will only have access to your experiment resources if you added them to the experiment at this stage - before deploying the resources.)
 
-Back on the experiment page, click on the "Update" button next to "Targeted Resources". On this page, you will add two resources to the experiment: first select LPN1, then select LPN2.
+Back on the experiment page, click on the "Update" button next to "Targeted Resources". Then, click "Add/Update".  
 
+On this page, you will add two resources to the experiment:
+
+* under "Portable Resources", toggle LPN1
+* and then LPN2
+
+Make sure that LPN1 has node number 1, and LPN2 has node number 2.
 
 Click "Save". Then, you will modify each of the nodes by clicking "Modify" - 
 
@@ -276,6 +292,21 @@ in the output. Leave this running, and in a second terminal window, run
 ```
 sudo dhclient tap0
 ```
+
+or
+
+```
+sudo dhcpcd -b tap0
+```
+
+(depending on which DHCP client is installed on your system). Use
+
+```
+ip addr
+```
+
+to make sure that `tap0` is assigned an IPv4 address.
+
 #### On Mac - start VPN
 
 For Mac OS, the recommended VPN software is Tunnelblick. With Tunnelblick running, open the Finder. Drag and drop the `.ovpn` file onto the Tunnelblick icon in the menu bar. You may be asked if the configuration should be shared or private (either is fine!) and you may have to give administrator authorization to install the configuration.
@@ -417,9 +448,9 @@ Hit Ctrl+O and then hit Enter to save the file. Then use Ctrl+X to exit and retu
 
 Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - now, for vehicle 2, you should see a "vehicle" and "txGRC" entry in the "screens" column.
 
-In QGroundControl, select "Vehicle 2" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". At the bottom of the screen, slide the indicator to the right to "arm" the ground vehicle. 
+In QGroundControl, select "Vehicle 2" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". Look for a slider, and slide the indicator to the right to "arm" the ground vehicle. 
 
-Then, click on any position inside the square geofence, and choose "Go to location". Use the slider on the bottom of the screen again to confirm. You will see the UGV move to the specified position.
+Then, click on any position inside the square geofence, and choose "Go to location". Use the slider again to confirm. You will see the UGV move to the specified position.
 
 #### Start aerial vehicle
 
@@ -482,11 +513,11 @@ This will monitor the radio output on the UAV. The last value in each row is the
 
 Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - for vehicle 1, you should see a "quality", "rxGRC", "vehicle", and "power" entry in the "screens" column.
 
-In QGroundControl, select "Vehicle 1" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". At the bottom of the screen, slide the indicator to the right to "arm" the aerial vehicle. 
+In QGroundControl, select "Vehicle 1" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". Slide the indicator to the right to "arm" the aerial vehicle. 
 
-On the left side of the screen, click "Takeoff" (icon looks like an arrow pointing up). Then, on the right side of the screen, use the slider to set the altitude to approximately 30m. Use the slider to confirm, and the UAV will life off the ground and hold the desired altitude. Watch the indicator at the bottom of the screen for confirmation.
+On the left side of the screen, click "Takeoff" (icon looks like an arrow pointing up). Then, on the right side of the screen, use the slider to set the altitude to approximately 30m (or about 100 feet). Use the slider to confirm, and the UAV will life off the ground and hold the desired altitude. Watch the indicator at the bottom of the screen for confirmation.
 
-Once the UAV is at its desired altitude,  click on a position that is inside its geofence, that will take it over and beyond the ground vehicle. Choose "Go to location". Use the slider on the bottom of the screen again to confirm. 
+Once the UAV is at its desired altitude,  click on a position that is inside its geofence, that will take it over and beyond the ground vehicle. Choose "Go to location". Use the slider again to confirm. 
 
 ![Fly UAV past the UGV.](images/fly-uav.png)
 
