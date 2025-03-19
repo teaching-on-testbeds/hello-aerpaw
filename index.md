@@ -31,9 +31,8 @@ To install QGroundControl, follow the instructions in the [QGroundControlGuide](
 
 During the setup, you will be prompted to specify certain settings, please use:
 
-* Unit system: metric 
+* Measurement units: use metric system, specify horizontal and vertical distance in meters, speed in kilometers/hour, and area in square meters
 * Autopilot: ArduPilot
-* Frame: Quad
 
 ![](images/qgc-setup.png)
 
@@ -86,7 +85,7 @@ Once you are logged in to the AERPAW experiment portal,
 2. In the "Employer/Organization" field, indicate your affiliation (e.g. your school).
 3. In the "Position/Title" field, indicate your position (e.g. "Student", "Summer Research Intern", etc.).
 4. Describe your anticipated use of AERPAW in the "Field of Research" field. You can write something like "Run wireless network experiments" or "Lab assignment for my course with Prof. Fraida Fund" or similar.
-5. Click "Update Profile" to save your entries.
+5. Click "Save Updates" to save your entries.
 
 #### Generate SSH keys
 
@@ -176,7 +175,7 @@ Once you are logged in to the AERPAW experiment portal,
 
 1. Click "Profile" in the navigation bar at the top.
 2. Next to "Roles", click the blue button that says "review the AERPAW AUP first". This will open the AERPAW Acceptable Use Policy for you to review.
-3. Then, click the green button that says "request Experimenter role".
+3. Then, click the green button that says "request Experimenter role". If prompted, confirm that you have read and accept the AERPAW Acceptable Use Policy and "Continue".
 4. The screen will refresh itself to show the pending request in the "Roles" section.
 5. Wait until you receive email notification from the AERPAW team that your request has been approved.
 
