@@ -353,7 +353,16 @@ Run
 cd; ./startOEOConsole.sh
 ```
 
-This will display a table showing all of the vehicles in your experiment, and their current state. You should see two vehicles, with ID 1 and ID 2. Leave this running - later, you will need to run some additional commands in this window.
+This will display a table showing all of the vehicles in your experiment, and their current state. You should see two vehicles, with ID 1 and ID 2, like this: 
+
+```
+| ID | armed | mode      | alt    | heartbeat | gps | screens |
+|----|-------|----------|--------|-----------|-----|---------|
+| 1  | 0     | ALT_HOLD | -0.017 | 1987      | 6   | []      |
+| 2  | 0     | MANUAL   | -0.166 | 1868      | 6   | []      |
+```
+
+Leave this running - later, you will need to run some additional commands in this window.
 
 Now you can connect QGroundControl to your experiment. In QGroundControl,
 
@@ -445,11 +454,18 @@ Hit Ctrl+O and then hit Enter to save the file. Then use Ctrl+X to exit and retu
 ./startexperiment.sh
 ```
 
-Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - now, for vehicle 2, you should see a "vehicle" and "txGRC" entry in the "screens" column.
+Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - now, for vehicle 2, you should see a "vehicle" and "txGRC" entry in the "screens" column. (The process numbers may be different.)
+
+```
+| ID | armed | mode     | alt    | heartbeat | gps | screens                        |
+|----|-------|----------|--------|-----------|-----|--------------------------------|
+| 1  | 0     | ALT_HOLD | -0.017 | 5473      | 6   | []                             |
+| 2  | 0     | MANUAL   | -0.114 | 5355      | 6   | ['501.txGRC', '508.vehicle']   |
+```
 
 In QGroundControl, select "Vehicle 2" in the dropdown at the top center of the screen. Click on "Ready to Fly" in the top left. Click "Arm". Look for a slider, and slide the indicator to the right to "arm" the ground vehicle. 
 
-Then, click on any position inside the square geofence, and choose "Go to location". Use the slider again to confirm. You will see the UGV move to the specified position.
+Then, click on any position inside the square geofence, and choose "Go to location". Use the slider again to confirm. You will see the UGV move to the specified position. 
 
 #### Start aerial vehicle
 
@@ -516,6 +532,15 @@ In QGroundControl, select "Vehicle 1" in the dropdown at the top center of the s
 
 On the left side of the screen, click "Takeoff" (icon looks like an arrow pointing up). Then, on the right side of the screen, use the slider to set the altitude to approximately 30m (or about 100 feet). Use the slider to confirm, and the UAV will life off the ground and hold the desired altitude. Watch the indicator at the bottom of the screen for confirmation.
 
+In the experiment console table, you should also see the updated altitude of the UAV:
+
+```
+| ID | armed | mode   | alt     | heartbeat | gps | screens                                                             |
+|----|-------|--------|---------|-----------|-----|---------------------------------------------------------------------|
+| 1  | 1     | GUIDED | 30.386  | 1890      | 6   | ['922.vehicle', '909.quality', '912.snr', '899.rxGRC', '902.power'] |
+| 2  | 1     | GUIDED | -0.071  | 1805      | 6   | ['1028.txGRC']                                                      |
+```
+
 Once the UAV is at its desired altitude,  click on a position that is inside its geofence, that will take it over and beyond the ground vehicle. Choose "Go to location". Use the slider again to confirm. 
 
 ![Fly UAV past the UGV.](images/fly-uav.png)
@@ -525,6 +550,18 @@ As the UAV flies to the specified position, watch the radio power reported in yo
 
 ## Reset experiment
 
-To return the experiment to its initial configuration. run `./stopexperiment.sh` and then `./reset.sh` inside the SSH session on each node (node 1 and node 2)
+To return the experiment to its initial configuration. run 
+
+```
+./stopexperiment.sh
+```
+
+inside the SSH session on each node (node 1 and node 2). Then, run
+
+```
+./reset.sh
+```
+
+inside the SSH session on one node (either node1 OR node2).
 
 In the experiment console session, use Ctrl+D to stop the console.
