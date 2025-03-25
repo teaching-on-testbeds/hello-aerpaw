@@ -227,7 +227,7 @@ The terminal prompt will change to
 root@E-VM-M2:~$ 
 ```
 
-indicating that you are logged in to node 2. On node 2, run
+indicating that you are logged in to node 2. On node 2, set up the applications that will run during our experiment - a radio transmitter and a vehicle GPS position logger:
 
 ```
 cd /root/Profiles/ProfileScripts/Radio 
@@ -235,12 +235,19 @@ cp Samples/startGNURadio-ChannelSounder-TX.sh startRadio.sh
 
 cd /root/Profiles/ProfileScripts/Vehicle
 cp Samples/startGPSLogger.sh startVehicle.sh
+
+cd /root
+```
+
+We will also change one parameter of the radio transmitter. Run:
+
+```
+sed -i 's/^SPS=.*/SPS=8/' "/root/Profiles/ProfileScripts/Radio/Helpers/startchannelsounderTXGRC.sh"
 ```
 
 Then, open the experiment script for editing
 
 ```
-cd /root
 nano /root/startexperiment.sh
 ```
 
@@ -294,17 +301,34 @@ root@E-VM-M1:~$
 indicating that you are logged in to node 1. On node 1, run
 
 ```
+wget https://raw.githubusercontent.com/teaching-on-testbeds/hello-aerpaw/refs/heads/main/resources/plot_signal_power.py -O  /root/plot_signal_power.py
+```
+
+to download a utility script that we will use later in the experiment. 
+
+On node 1, set up the applications that will run during our experiment - a radio receiver and a vehicle GPS position logger:
+
+
+```
 cd /root/Profiles/ProfileScripts/Radio 
 cp Samples/startGNURadio-ChannelSounder-RX.sh startRadio.sh 
 
 cd /root/Profiles/ProfileScripts/Vehicle
 cp Samples/startGPSLogger.sh startVehicle.sh
-```
 
-Then, open the experiment script for editing
-
-```
 cd /root
+```
+
+
+We will also change one parameter of the radio receiver. Run:
+
+```
+sed -i 's/^SPS=.*/SPS=8/' "/root/Profiles/ProfileScripts/Radio/Helpers/startchannelsounderRXGRC.sh"
+```
+
+Open the experiment script for editing
+
+```
 nano /root/startexperiment.sh
 ```
 
@@ -325,10 +349,10 @@ Hit Ctrl+O and then hit Enter to save the file. Then use Ctrl+X to exit and retu
 and after a few moments, run
 
 ```
-tail -f Results/$(ls -tr Results/ | grep power_log | tail -n 1 )
+python3 /root/plot_signal_power.py
 ```
 
-This will monitor the radio output on the UAV. The last value in each row is the received signal strength.
+This will monitor the received radio signal power on the UAV.
 
 Switch to the terminal in which you are connected to the experiment console (with a table showing the state of the two vehicles) - for vehicle 1, you should see a "quality", "rxGRC", "vehicle", and "power" entry in the "screens" column.
 
@@ -349,7 +373,9 @@ Once the UAV is at its desired altitude,  click on a position that is inside its
 
 ![Fly UAV past the UGV.](images/fly-uav.png)
 
-As the UAV flies to the specified position, watch the radio power reported in your terminal. Confirm that the received signal strength increases as the UAV moves above the UGV, then decreases again when the distance between UAV and UGV increases.
+As the UAV flies to the specified position, watch the radio power reported in the visualization. Confirm that the received signal strength increases as the UAV moves above the UGV, then decreases again when the distance between UAV and UGV increases.
+
+You can use Ctrl+C to stop the visualization.
 
 
 ## Reset experiment
