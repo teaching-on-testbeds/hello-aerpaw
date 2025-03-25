@@ -13,7 +13,7 @@ history = deque()
 
 def find_latest_power_log():
     files = sorted(
-        glob.glob("Results/*_power_log.txt"),
+        glob.glob("/root/Results/*_power_log.txt"),
         key=lambda f: os.path.getmtime(f)
     )
     return files[-1] if files else None
