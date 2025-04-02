@@ -213,13 +213,14 @@ Now, you will have to fill in some details about your experiment:
 * Enter your university name for "host institution"
 * For "title of your sponsored project", write "NA", and specify that there is no grant number
 * For "Name of the lead experimenter", specify the name of your instructor or research advisor who is supervising your use of AERPAW. And, put their email address in the "email of the lead experimenter" field
-* in the "Keywords" section, you can use: "Hello AERPAW"
-* for "intended goal" you can use: "Hello AERPAW"
-* leave all of the options un-checked for "ultimate end destination". Our experiment will end in development mode, without progressing to any of these later stages.
+* in the "Keywords: section, you can use: wireless, uav, aerpaw
+* For "ultimate end destination" select "Development only".
 * You can select "No" for urgency and "No" for sharing data.
 * and in "expected behavior of the vehicles" you can write: "Hello AERPAW"
 
-Then, click "Create experiment".
+Then, click "Create canonical experiment".
+
+> **Note**: If you have omitted any field in the form, then an error is raised when you "Create canonical experiment". However, the experiment is still created and you can return to the project page, find your experiment by name, click on it, and proceed to the next step.
 
 From the experiment page, you will add members and resources to the experiment: 
 
