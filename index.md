@@ -384,7 +384,7 @@ Now, when you open QGroundControl, you should see the two vehicles in your exper
 
 We will restrict our experiment to a specific "geofence" area, so let's mark this area in QGroundControl. Download the two geofence files:
 
-* [UAV Geofence](https://drive.google.com/file/d/1P8GxtgAPCSKywPo4pDo0RmiJ2MQmHTJJ/view)
+* [UAV Geofence](https://drive.google.com/file/d/1gmJ0NfVkToZXQRdodrHSvXE6ZUU9eUS5/view)
 * [UGV Geofence](https://drive.google.com/file/d/1JiHwizo982Rxg_0im9mnenFP9LhifjW5/view)
   
 Then, in QGroundControl, make sure that "Vehicle 1" is selected in the dropdown at the top center of the screen.
